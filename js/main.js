@@ -1,6 +1,19 @@
 const links = [
     {
-      label: "Week1 notes",
+      label: "Week 1 notes",
       url: "week1/index.html"
     }
-  ]
+  ];
+
+  function createList(){
+    let list = "";
+
+    links.forEach(link => {
+      list += "<li>";
+      list += "<a href='"+ link['url'] + "'>";
+      list += link.label + "</a>";
+      list += "</li>";
+    });
+
+    document.getElementById("weeks-list").innerHTML = list;
+  }
