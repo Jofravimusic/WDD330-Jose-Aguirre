@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>WDD 330 - José Aguirre - Week 3</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>José Aguirre - WDD330</h1>
+      <h2>Week 3 - Notes and Questions</h2>
+      <a href="../index.html">Return to main</a>
+    </header>
+    <main class="content">
+      <h2>Notes</h2>
+      <button type="button" onclick="appear()" id="appearButton">
+        Make notes visible
+      </button>
+      <button type="button" onclick="hide()" id="hideButton" disabled>
+        Hide notes
+      </button>
+      <p class="appear">
+        In previous weeks we have been learning about arrays and functions and
+        they are built-in objects as part of the JavaScript language.
+      </p>
+      <p class="appear">
+        Objects literals are created by the developers and assign values as
+        properties of it and functions as methods. Something interesting is that
+        a function in an object is also its property and receive the name of
+        method like in other programming languages.
+      </p>
+      <p class="appear">
+        Objects are defined in the following way: const anObject = {}
+      </p>
+      <p class="appear">
+        Properties are key-value pairs declared in the following way: age : 36.
+        If we have several properties, we separete them by commas like this:
+      </p>
+      <p class="appear">
+        const anObject = {age : 36,<br />
+        name: 'Object Literal',<br />
+        doSemething(){<br />
+        //code for doing something when the method is called <br />
+        }<br />
+        }
+      </p>
+      <p class="appear">
+        Properties can be accessed by the dot notation or by square bracket
+        notation like this: <br />anObject.age <br />
+        or <br />
+        anObject['age'] <br />
+        Square brackets notation are best when properties name are separeted by
+        a space, something like anObject['Action performed'];
+      </p>
+      <p class="appear">
+        Properties and methods can be changed or removed, even when they are
+        assigned as a const
+      </p>
+      <p class="appear">
+        There are many built-in functions to help us with math operations,
+        getting dates and create dates objects.
+      </p>
+      <p class="appear">
+        JSON uses object literal notation to exchange information across
+        different plaforms
+      </p>
+      <p class="appear">
+        It is essential to understand about DOM, because it is the organization
+        of an HTML document and JavaScript can access the elements of HTML by
+        using the document object and its methods to get elements by ID, Classes
+        and Selectors and Tags name. Also we have query selectors that can helps
+        us change style of the page. For example, I wanted to put in practice
+        this in my notes by using querySelectorAll to get the classes that will
+        receive an action of a JavaScript Function according to the onclick and
+        scroll event listener that I used.
+      </p>
+      <p class="appear">
+        Event listeners can help us te create a more interactive webpage as we
+        are able to combine it with DOM manipulation. Event listeners can be
+        handled inline on a tag or in a JavaScript file or script tag. Event
+        listener works with callbacks functions when an event happens.
+      </p>
+      <p class="appear">
+        Event listener also can be added or removed with addEventListener() and
+        removeEventListener().
+      </p>
+      <h2 class="revealScroll">Questions</h2>
+      <p class="revealScroll">
+        Is is better to use inline event listeners or just declared in the
+        JavaScript file or Script tag?
+      </p>
+      <p class="revealScroll">
+        <strong>Note:</strong> Questions appears by scrolling on the web page
+        while notes appears and hide with the buttons
+      </p>
+    </main>
+    <footer>
+      <p>This Assigment was made with event listeners and functions</p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
