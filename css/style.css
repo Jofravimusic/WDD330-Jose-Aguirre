@@ -62,6 +62,17 @@ a:hover {
   border-radius: 0.4em;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin: 0 auto;
+  padding: 1em;
+  background-color: #7d8e7c;
+  border-radius: 1em;
+  max-width: 20em;
+}
+
 footer {
   margin-top: 2em;
   padding: 2em;

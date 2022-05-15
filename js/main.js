@@ -11,6 +11,10 @@ const links = [
     label: 'Week 3 notes',
     url: 'week3/index.html',
   },
+  {
+    label: 'Week 4 notes',
+    url: 'week4/index.html',
+  },
 ];
 
 function createList() {
@@ -72,3 +76,58 @@ async function revealScroll() {
 }
 
 window.addEventListener('scroll', revealScroll);
+
+const form = document.forms[0];
+const input = form.elements.searchInput;
+
+form.addEventListener('submit', search, false);
+
+function search(event) {
+  alert(`You Searched for: ${input.value}`);
+  event.preventDefault();
+}
+
+input.addEventListener('change', () => alert('changed'), false);
+input.addEventListener(
+  'focus',
+  function () {
+    if (input.value === 'Search Here') {
+      input.value = '';
+    }
+  },
+  false
+);
+
+const loginForm = document.forms.login;
+
+loginForm.addEventListener('submit', login, false);
+
+function login(event) {
+  alert(`You Simulated a login session`);
+  event.preventDefault();
+}
+
+input.addEventListener(
+  'blur',
+  function () {
+    if (input.value === '') {
+      input.value = 'Search Here';
+    }
+  },
+  false
+);
+
+class Animal {
+  constructor(name, family) {
+    this.name = name;
+    this.family = family;
+  }
+  run() {
+    return alert(`${this.name} is running`);
+  }
+  showFamily() {
+    return alert(`${this.name}'s family is ${this.family}`);
+  }
+}
+
+const cat = new Animal('Cat', 'feline');

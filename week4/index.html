@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>WDD 330 - José Aguirre - Week 4</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>José Aguirre - WDD330</h1>
+      <h2>Week 4 - Notes and Questions</h2>
+      <a href="../index.html">Return to main</a>
+    </header>
+    <main class="content">
+      <h2>Notes</h2>
+      <p>
+        Forms are the main componets on the web that allows the user interact
+        with the webpage. Many search engines like google, yahoo and others use
+        forms as parts of their DOM, specially input tags and buttons.
+      </p>
+      <p>
+        Here's a litlle example of a form with some JavaScript code that help
+        the user interact with the web. (This example was part of the lecture of
+        the book).
+      </p>
+      <form name="search" action="/search">
+        <input name="searchInput" />
+        <button type="submit">Search</button>
+      </form>
+      <p>
+        There's different elements to work with in the forms. We have the input
+        tags of type text (default), password, check boxes, radio buttons and
+        file uploads; also, we have textarea for large input of text and select
+        as a list of options.
+      </p>
+      <p>
+        It is important to use JavaScript to do Form validation, so, the
+        information entered by the user can be filter and processed before being
+        sent to the server. Inside the input tag we can use validation keywords
+        like: required, min, max. Here's a simulation of a login form with some
+        of this properties (try it, it will display a message):
+      </p>
+      <form action="/something" name="login" class="login-form">
+        <input type="email" required placeholder="Email is required" />
+        <input type="password" required placeholder="Password is required" />
+        <button type="submit">Login</button>
+      </form>
+      <p>
+        Object-Oriented Programming is a style of programming. Many languages
+        creates classes and then creates objects using those classes as
+        instances of a Class. In JavaScript this was done exactly the same we
+        learn last week when creating Objects Literal before ES6, because
+        classes have properties and methods and objects in JavaScript are
+        similiar to it. Then in ES6 was introduced the new class declaration.
+        This is an example:
+      </p>
+      <p style="margin: 0 auto; max-width: 22em">
+        class Animal{<br />
+        &emsp;constructor(name, family){<br />
+        &emsp;&emsp;this.name = name;<br />
+        &emsp;&emsp;this.family = family <br />
+        &emsp;} <br />
+        &emsp;run(){<br />
+        &emsp;&emsp;return `${this.name} is running`; <br />
+        &emsp;showFamily() {<br />
+        &emsp; return `${this.name}'s family is ${this.family}`; <br />
+        &emsp; } <br />
+        &emsp;} <br />
+        }
+      </p>
+      <p>Creating an instance of a class is like this:</p>
+      <p>const cat = new Animal('cat', 'feline');</p>
+      <button type="button" onclick="cat.run()">Example Cat method run</button>
+      <button type="button" onclick="cat.showFamily()">Cat's family</button>
+      <p>
+        By default, properties and methods on JavaScript are public, but we can
+        use getter and setter like in other programming languages. We achieve
+        this by writting properties with and underscore before the name. Example
+        with the previous Animal Class:
+      </p>
+      class Animal{<br />
+      &emsp;constructor(name){<br />
+      &emsp;&emsp;let _name = name;<br />
+      &emsp;} <br />
+      &emsp;this.setName = name => { return _name = name; }<br />
+      &emsp;} <br />
+      &emsp;this.getName = () => _name; <br />
+      }
+      <p>
+        In OOP there are three main concepts: Encapsulation, Polymorphism and
+        Inheritance.
+      </p>
+      <p>
+        Developing in JavaScript in these days has a lot of tools to help us
+        scale our production. In this days we have libraries like jQuery,
+        Underscore & Lodash and React.js that can manipulate DOM; frameworks,
+        package managers like npm in Node.js
+      </p>
+      <p>
+        We can devide our code by using modular JavaScript. This is done by
+        creating different pieces of .js files and then importing in the mains
+        .js files being used
+      </p>
+      <p>
+        Node.js introduced npm. With npm we can install thousands of packages
+        with api, libraries and others tools that can help us with our
+        programming tasks. When using npm init, this create a package.json file
+        with the packages installed for our project.
+      </p>
+      <p>Yarn in an alternative option to npm.</p>
+      <h2>Questions</h2>
+      <p>
+        Objects and classes looks like the same in JavaScript. When is better to
+        use a Class instead of an Object and vice versa?
+      </p>
+    </main>
+    <footer>
+      <p></p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
