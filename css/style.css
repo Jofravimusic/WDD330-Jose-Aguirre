@@ -26,6 +26,11 @@ body {
   color: #1c151b;
 }
 
+#weeks-list {
+  max-width: 7em;
+  margin: 0 auto;
+}
+
 .appear {
   position: relative;
   transform: translateY(50px);
