@@ -85,3 +85,58 @@ footer {
   background-color: #7d8e7c;
   color: #f9f2ef;
 }
+
+.todo-title {
+  text-align: center;
+}
+
+.todo-form {
+  max-width: 30em;
+  margin: 0 auto;
+  background-color: #f9f2ef;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+#todo-list {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#todo-list li {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: grid;
+  grid-template-columns: 2em 1fr 2em;
+  border-radius: 0.5em;
+  background-color: #7d8e7c;
+  color: #f9f2ef;
+  align-items: center;
+  padding: 0.5em;
+}
+#todo-list li:nth-child(even) {
+  background-color: #1c151b;
+}
+
+#todo-list li button {
+  align-self: end;
+}
+
+.list-footer {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.5em;
+}
+
+#add-todo {
+  display: flex;
+  justify-content: center;
+
+  gap: 0.5em;
+}
+
+input[type='checkbox']:checked + label {
+  text-decoration: line-through;
+}

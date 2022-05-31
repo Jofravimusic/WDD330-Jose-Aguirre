@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>WDD 330 - José Aguirre - To Do List App</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>José Aguirre - WDD330</h1>
+      <h2>To Do List APP</h2>
+      <a href="../index.html">Return to main</a>
+    </header>
+    <main class="content">
+      <h2 class="todo-title">Todos</h2>
+      <div class="todo">
+        <form class="todo-form" onsubmit="return false;">
+          <ul id="todo-list"></ul>
+          <div class="list-footer">
+            <label for="total-filter"><span id="total-number"></span></label>
+            <button type="button" onclick="showAllTasks()">All</button>
+            <button type="button" onclick="showActiveTasks()">Active</button>
+            <button type="button" onclick="showCompletedTasks()">
+              Completed
+            </button>
+          </div>
+          <div id="add-todo">
+            <input
+              type="text"
+              placeholder="add your task here"
+              id="add-input"
+            />
+            <button type="button" onclick="addTask()" id="add-button">+</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p></p>
+    </footer>
+    <script src="../js/todo-main.js" type="module"></script>
+  </body>
+</html>
