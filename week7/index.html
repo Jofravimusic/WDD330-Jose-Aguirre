@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>WDD 330 - José Aguirre - Week 7</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>José Aguirre - WDD330</h1>
+      <h2>Week 7 - Notes and Questions</h2>
+      <a href="../index.html">Return to main</a>
+    </header>
+    <main class="content">
+      <h2>Notes</h2>
+      <p>
+        Functions are first-class objects, this means they can be passed in the
+        same way as every other value. They have their own properties and
+        methods.
+      </p>
+      <p>
+        Functions can call itself and iterate until a condition is achieved.
+        This is called Recursive Functions.
+      </p>
+      <p>
+        Callbacks are used to facilitate event-driven Asynchronous programming,
+        because JavaScript excecute a code once at a time.
+      </p>
+      <p>
+        Promises are used to represent the future result of and Asynchronous
+        operation. Promises are created with a constructor function in the
+        following way:
+      </p>
+      <p>const promise = new Promise( () )</p>
+      <p>
+        Async Functions are used with the await keyword. This help to excecute
+        when a promise or a condition is met.
+      </p>
+      <p>
+        Ajax is a way to make a webpage dynamic, avoiding to reload the page
+        everytime new content need to be rendered. "Ajax" stand for:
+        Asynchronous JavaScript and XML. Though XML was the standard used many
+        years ago, now Ajax works is most used with json because of it native
+        interpretation by JavaScript as an object notation of it. XML require
+        extra work to make it render on the page, for that reason developers
+        prefers to used json instead.
+      </p>
+      <p>
+        Previously, XMLHttpRequest object was widely used to work with Ajax, but
+        now is better used the living standard of Fetch API
+      </p>
+      <p>We can use fetch() in the following way:</p>
+      <p>
+        fetch('https://somelink.com/here')<br />
+        .then(//Something happens here)<br />
+        .catch(//Here will handle the errors)
+      </p>
+      <p>
+        Here's and example from the readings: "Number Fact" that has a response
+        as a Text and a "Chuck Norris Fact" that receives a JSON response and it
+        parsed into this html
+      </p>
+      <p>
+        Something important here (as a personal disclaimer) is to note this
+        warning from the reading:
+      </p>
+      <quote
+        >"Some of the “facts” returned by chucknorris.io can be mildly offensive
+        and use inappropriate language, so proceed with caution!"</quote
+      ><br />
+      <button id="number">Number Fact</button>
+      <button id="chuck">Chuck Norris Fact</button>
+      <div id="output">Ajax response will appear here</div>
+      <h2>Questions</h2>
+      <p>
+        I've seen projects using XMLHttpRequest and other useing Fetch with
+        AJAX. When is better to use one of this methods instead of the other?
+      </p>
+    </main>
+    <footer>
+      <p></p>
+    </footer>
+    <script src="../js/main.js"></script>
+    <script src="../js/week7-main.js"></script>
+  </body>
+</html>

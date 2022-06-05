@@ -23,6 +23,10 @@ const links = [
     label: 'To Do List App',
     url: 'week6/index.html',
   },
+  {
+    label: 'Week 7 notes',
+    url: 'week7/index.html',
+  },
 ];
 
 function createList() {
