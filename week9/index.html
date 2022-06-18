@@ -20,13 +20,86 @@
     </header>
     <main class="content">
       <h2>Notes</h2>
-      <p>We can use CSS3 to transform elements in an HTML document.</p>
+      <p>
+        As JavaScript can be run on different enviroments, when we run it on the
+        Browser, our Global Object is the window.
+      </p>
+      <p>
+        The Browser Object Model (BOM) helps us understand how this works. In
+        this example it is used the open and close method from the windows
+        Object of the browser:
+      </p>
+      <button type="button" onclick="PopUp.open()" id="openButton">
+        New window to main
+      </button>
+      <button type="button" onclick="PopUp.close()" id="closeButton" disabled>
+        Close window to main
+      </button>
+      <p>
+        Dialogs are others methods from the windows object. window.alert(),
+        window.prompt() and window.confirm() . In previous notes I used it to
+        excecute some codes. Refer to them.
+      </p>
+
+      In the following example, I used the timing functions setInteval() and
+      clearInterval() to create an animation. Nowadays, it is used
+      requestAnimationFrame() methods, but it is recommended to use @keyframes
+      on CSS for better performance.
+      <div id="square"></div>
+
+      <button type="button" onclick="window.clearInterval(rotateSquare)">
+        Stop Rotate
+      </button>
+      <p>
+        document object is part of the window object on the browser. We can
+        manage cookies on the document object in the following way:
+      </p>
+      <p>document.cookie = 'nameCourse=WDD330'</p>
+
+      <p>
+        We can get the cookies of a website by going to the console and writting
+        document.cookie and it will display them all.
+      </p>
+      <p>Here I posted some examples of HTML5 API:</p>
+      <p>
+        <strong>Websockets</strong>: using this service:
+        wss://ws.postman-echo.com/raw
+      </p>
+      <form>
+        <label for="message">Enter a Message:</label>
+        <input type="text" name="message" />
+        <button type="submit">Submit</button>
+      </form>
+      <div id="output"></div>
+      <p><strong>Notifications</strong></p>
+      <p>
+        In this examples, the first button ask for permission to receive
+        notifications. The second button ask for permission if is not asked
+        before and then displayed a message with an event listener (which is the
+        click event) and then open a new window with the main menu of this
+        portfolio
+      </p>
+      <button type="button" onclick="askNotification()">
+        Ask for permission for Notification
+      </button>
+      <button type="button" onclick="sendNotification()">
+        Receive a Notification
+      </button>
+      <p>
+        Multimedia API was used in this week team assigment. The multimedia was
+        audio.
+      </p>
       <h2>Questions</h2>
+      <p>
+        In the readings recommend the use of keyframes on css instead of
+        javaScript animations. When do we need to use one instead of the other?
+      </p>
     </main>
     <footer>
-      <p></p>
+      <p>
+        Examples in this notes were taken from the book and then adapted by me.
+      </p>
     </footer>
-    <script src="../js/main.js"></script>
-    <script src="../js/week7-main.js"></script>
+    <script src="../js/week9-main.js"></script>
   </body>
 </html>

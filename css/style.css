@@ -140,3 +140,85 @@ footer {
 input[type='checkbox']:checked + label {
   text-decoration: line-through;
 }
+
+#square {
+  margin: 100px;
+  width: 100px;
+  height: 100px;
+  background: #d16;
+}
+.week8-title {
+  color: #f9f2ef;
+  font-size: 3em;
+  font-weight: bolder;
+  justify-self: center;
+  align-self: center;
+  animation: title-appear 3s ease;
+}
+.links-container {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  grid-column: span 3;
+  grid-row: 4;
+}
+.fake-links {
+  font-family: 'Patrick Hand', cursive;
+  background-color: #1c151b;
+  color: #f9f2ef;
+  padding: 1em;
+  transition: 0.5s;
+  border-radius: 50%;
+}
+.fake-links:hover {
+  padding: 1em;
+  animation: poujump 1s infinite;
+}
+
+.whatsapp-icon {
+  width: 25%;
+  height: 25%;
+  margin: 0 auto;
+  transition: 0.5s;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.2);
+}
+
+.myCanvas {
+  border: dotted 2px black;
+}
+
+@keyframes poujump {
+  0% {
+    border-radius: 50% 50% 10% 10%;
+  }
+  50% {
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
+  100% {
+    transform: translateY(0);
+    border-radius: 50% 50% 10% 10%;
+  }
+}
+
+@keyframes title-appear {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(0);
+    padding: 0.2em;
+    border-radius: 5em;
+    background-color: #f9f2ef;
+    color: #1c151b;
+  }
+  100% {
+    opacity: 1;
+  }
+}
