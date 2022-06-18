@@ -1,42 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../images/profilePic.jpg"
+      type="image/x-icon"
+    />
     <title>WDD 330 - José Aguirre - Week 2</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="main-header">
-        <h1>José Aguirre - WDD330</h1>
-        <h2>Week 2 - Notes and Questions</h2>
-        <a href="../index.html">Return to main</a>
+      <h1>José Aguirre - WDD330</h1>
+      <h2>Week 2 - Notes and Questions</h2>
+      <a href="../index.html">Return to main</a>
     </header>
     <main class="content">
-        <h2>Notes</h2>
-        <p>From this week reading, I liked that the author pointed first to make comments when we are learning to code. The author said that this should be wierd to read in a programming suggestion, but its benefits comes with the time, because it helps us to documents what we are doing and have a clear reading of our own code and help others who will work with us.</p>
-        <p>Learning about data types is very helpul and handy when it comes to talk about data manipulation. Knowing what kind of data we are working, we can have a better code and less errors in the future. At this point, naming variables it is also important, because it will help us to be clear what the variable will do. Declaring a Variable start with the keyword <strong>const</strong> and it is initialized in that line of the code, because const variables can't be changed in the future. We use <strong>let</strong> keywork to declare a variable that can be changed while it is manipulated by the code.</p>
-        <p>When we declare a variable, we need to consider its scope: Global or Local. It is important to be aware of this, because if we declare a local variable to be processed just by a codeblock of a certain function or condicional statement and then we try to use that result outside that scope of the variable, we will have an error in our code. We can store a result from a local variable and pass it to a Global variable. But at this point we need to be carefull and limit us in the use of global scope variables, because we can have problems in the future by having our variable expose to be changed by other function or reassing by another process we can create in our code.</p>
-        <p>The recommended convention to write names variables is the Camel Case, which starts with a lowercase letter and then each new word is capitalized.</p>
-        <p>On string manipulation, template literal become so handy when we have to put the name of a variable inside a one line and avoid concatenations of strings.</p>
-        <p>Learning to manage Arrays, Sets and Maps it is so important, because we can manipulate data and stored it in an advanced way. Using a For Each loop in arrays will help us to access the data stored in it and use it according to the requirements of our program.</p>
-        <p>As we recognize that arrays are inside the family of Objects, we can rely that objects have some useful methods. Learning to use methods those methods improve how we manage them.</p>
-        <p>Conditional statements works with boolean results. if - else staments works when a condiction is met and do another if not. When we have just a simple condition, we can use the ternary operator: condition ? (//code to run if condition is true) : (//code to run if condition is false) (pasted from the book)</p>
-        <p>Functions are the solutions for avoiding code repetition and for this reason, in JavaScript exists different ways to create and evoke it. The most common way to create it is by writting:</p>
-        <p>function functionName(){ code here} </p>
-        <p>Other way to declare a function is by assigning it to a variable (Function Expression):</p>
-        <p>const myFunction = Function(){code here};</p>
-        <p>A new recent way to declare a function is the arrow function that is written in this way:</p>
-        <p>const myFunction = () => {code here};</p>
-        <p>Function Expression and Arrow functions ends with a semicolon, while Functions Literal doesn't need it</p>
-        <p>When we create a function and we specify data needed to be passed to it, we called it parameters. When we call a function and we pass that data, it is called arguments.</p>
-        <h2>Questions</h2>
-        <p>When is a good idea to use Symbol as a datatype?</p>
+      <h2>Notes</h2>
+      <p>
+        From this week reading, I liked that the author pointed first to make
+        comments when we are learning to code. The author said that this should
+        be wierd to read in a programming suggestion, but its benefits comes
+        with the time, because it helps us to documents what we are doing and
+        have a clear reading of our own code and help others who will work with
+        us.
+      </p>
+      <p>
+        Learning about data types is very helpul and handy when it comes to talk
+        about data manipulation. Knowing what kind of data we are working, we
+        can have a better code and less errors in the future. At this point,
+        naming variables it is also important, because it will help us to be
+        clear what the variable will do. Declaring a Variable start with the
+        keyword <strong>const</strong> and it is initialized in that line of the
+        code, because const variables can't be changed in the future. We use
+        <strong>let</strong> keywork to declare a variable that can be changed
+        while it is manipulated by the code.
+      </p>
+      <p>
+        When we declare a variable, we need to consider its scope: Global or
+        Local. It is important to be aware of this, because if we declare a
+        local variable to be processed just by a codeblock of a certain function
+        or condicional statement and then we try to use that result outside that
+        scope of the variable, we will have an error in our code. We can store a
+        result from a local variable and pass it to a Global variable. But at
+        this point we need to be carefull and limit us in the use of global
+        scope variables, because we can have problems in the future by having
+        our variable expose to be changed by other function or reassing by
+        another process we can create in our code.
+      </p>
+      <p>
+        The recommended convention to write names variables is the Camel Case,
+        which starts with a lowercase letter and then each new word is
+        capitalized.
+      </p>
+      <p>
+        On string manipulation, template literal become so handy when we have to
+        put the name of a variable inside a one line and avoid concatenations of
+        strings.
+      </p>
+      <p>
+        Learning to manage Arrays, Sets and Maps it is so important, because we
+        can manipulate data and stored it in an advanced way. Using a For Each
+        loop in arrays will help us to access the data stored in it and use it
+        according to the requirements of our program.
+      </p>
+      <p>
+        As we recognize that arrays are inside the family of Objects, we can
+        rely that objects have some useful methods. Learning to use methods
+        those methods improve how we manage them.
+      </p>
+      <p>
+        Conditional statements works with boolean results. if - else staments
+        works when a condiction is met and do another if not. When we have just
+        a simple condition, we can use the ternary operator: condition ? (//code
+        to run if condition is true) : (//code to run if condition is false)
+        (pasted from the book)
+      </p>
+      <p>
+        Functions are the solutions for avoiding code repetition and for this
+        reason, in JavaScript exists different ways to create and evoke it. The
+        most common way to create it is by writting:
+      </p>
+      <p>function functionName(){ code here}</p>
+      <p>
+        Other way to declare a function is by assigning it to a variable
+        (Function Expression):
+      </p>
+      <p>const myFunction = Function(){code here};</p>
+      <p>
+        A new recent way to declare a function is the arrow function that is
+        written in this way:
+      </p>
+      <p>const myFunction = () => {code here};</p>
+      <p>
+        Function Expression and Arrow functions ends with a semicolon, while
+        Functions Literal doesn't need it
+      </p>
+      <p>
+        When we create a function and we specify data needed to be passed to it,
+        we called it parameters. When we call a function and we pass that data,
+        it is called arguments.
+      </p>
+      <h2>Questions</h2>
+      <p>When is a good idea to use Symbol as a datatype?</p>
     </main>
     <footer>
-        <p></p>
+      <p></p>
     </footer>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
