@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../images/profilePic.jpg"
+      type="image/x-icon"
+    />
+    <title>WDD 330 - José Aguirre - Week 10</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>José Aguirre - WDD330</h1>
+      <h2>Week 10 - Notes and Questions</h2>
+      <a href="../index.html">Return to main</a>
+    </header>
+    <main class="content">
+      <h2>Notes</h2>
+      <p>
+        Client-side and server-side validation should always be in our projects,
+        because there would be malicious users that can affect or application
+        even passing client-side validation.
+      </p>
+      <p>There are two types of client-side validation</p>
+      <ol>
+        <li>
+          <strong>Built-in form validation:</strong> This uses HTML5 form
+          validation features like require, min, max, minlength, maxlength,
+          pattern and type. These features are so powerfull but they are less
+          customizable.
+        </li>
+        <li>
+          <strong>JavaScript validation code:</strong> This option allows us to
+          customize our validation process, but it requires to do everything
+        </li>
+      </ol>
+      <p>Here's an example of Built-in form validation</p>
+      <form id="built-in-form">
+        <p class="p-form"></p>
+        <fieldset class="built-in-fieldset">
+          <legend>
+            Do you have a driver's license?<abbr
+              title="This field is mandatory"
+              aria-label="required"
+              >*</abbr
+            >
+          </legend>
+          <!-- While only one radio button in a same-named group can be selected at a time,
+                 and therefore only one radio button in a same-named group having the "required"
+                 attribute suffices in making a selection a requirement -->
+          <input
+            class="built-in-input"
+            type="radio"
+            required
+            name="driver"
+            id="r1"
+            value="yes"
+          /><label for="r1">Yes</label>
+          <input
+            class="built-in-input"
+            type="radio"
+            required
+            name="driver"
+            id="r2"
+            value="no"
+          /><label for="r2">No</label>
+        </fieldset>
+
+        <p class="p-form">
+          <label for="n1">How old are you?</label>
+          <!-- The pattern attribute can act as a fallback for browsers which
+               don't implement the number input type but support the pattern attribute.
+               Please note that browsers that support the pattern attribute will make it
+               fail silently when used with a number field.
+               Its usage here acts only as a fallback -->
+          <input
+            class="built-in-input"
+            type="number"
+            min="12"
+            max="120"
+            step="1"
+            id="n1"
+            name="age"
+            pattern="\d+"
+          />
+        </p>
+        <p class="p-form">
+          <label for="t1"
+            >What's your favorite fruit?<abbr
+              title="This field is mandatory"
+              aria-label="required"
+              >*</abbr
+            ></label
+          >
+          <input
+            class="built-in-input"
+            type="text"
+            id="t1"
+            name="fruit"
+            list="l1"
+            required
+            pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range"
+          />
+          <datalist id="l1">
+            <option>Banana</option>
+            <option>Cherry</option>
+            <option>Apple</option>
+            <option>Strawberry</option>
+            <option>Lemon</option>
+            <option>Orange</option>
+          </datalist>
+        </p>
+        <p class="p-form">
+          <label for="t2">What's your e-mail address?</label>
+          <input class="built-in-input" type="email" id="t2" name="email" />
+        </p>
+        <p>
+          <label for="t3">Leave a short message</label>
+          <textarea
+            class="built-in-textarea"
+            id="t3"
+            name="msg"
+            maxlength="140"
+            rows="5"
+          ></textarea>
+        </p>
+        <p>
+          <button>Submit</button>
+        </p>
+      </form>
+      <p>Here's an example of JavaScript validation:</p>
+      <div class="form-container">
+        <form novalidate id="javascript-form">
+          <p class="p-javascript-form">
+            <label for="mail">
+              <span>Please enter an email address:</span>
+              <input
+                type="email"
+                id="mail"
+                name="mail"
+                required
+                minlength="8"
+              />
+              <span class="error" aria-live="polite"></span>
+            </label>
+          </p>
+          <button>Submit</button>
+        </form>
+        <p>
+          If you inspect the javascript file and css you will notice how this
+          works using event listeners
+        </p>
+      </div>
+      <p>
+        The following example is the use of fetch. For this example I used an
+        API created in another course (CSE341 - Web Backend Development II)
+      </p>
+      <div id="contactDiv">
+        <table id="contact-table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Birthday</th>
+              <th>Favorite Color</th>
+            </tr>
+          </thead>
+          <tbody id="contactList"></tbody>
+        </table>
+      </div>
+      <div id="post-contact">
+        <p>
+          Form to add a Contact using Fetch Post (All elements are required, see
+          console for errors if something is missing or bad entered)
+        </p>
+        <form id="post-form">
+          <label for="firstName">Add a first name</label>
+          <input type="text" id="firstName" required /><br />
+          <label for="lastName">Add a last name</label>
+          <input type="text" id="lastName" required /><br />
+          <label for="email">Add an email</label>
+          <input type="email" id="email" required /><br />
+          <label for="birthday">Add birthday</label>
+          <input type="text" id="birthday" required /><br />
+          <label for="favoriteColor">Add Favorite Color</label>
+          <input type="text" id="favoriteColor" required /><br />
+          <button type="button" onclick="postData()">Post Data</button>
+        </form>
+      </div>
+      <h2>Questions</h2>
+      <p></p>
+    </main>
+    <footer>
+      <p>
+        Examples taken from the readings this weeks on this links
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation"
+          >Form Validation</a
+        >
+      </p>
+    </footer>
+    <script src="../js/week10-main.js"></script>
+  </body>
+</html>
