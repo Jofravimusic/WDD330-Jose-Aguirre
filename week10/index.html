@@ -157,7 +157,9 @@
       </div>
       <p>
         The following example is the use of fetch. For this example I used an
-        API created in another course (CSE341 - Web Backend Development II)
+        API created in another course (CSE341 - Web Backend Development II). The
+        table will render a button to Delete a Contact using Fetch with DELETE
+        method.
       </p>
       <div id="contactDiv">
         <table id="contact-table">
@@ -168,32 +170,55 @@
               <th>Email</th>
               <th>Birthday</th>
               <th>Favorite Color</th>
+              <th>Delete</th>
             </tr>
           </thead>
-          <tbody id="contactList"></tbody>
+          <tbody id="contactList">
+            <tr>
+              <td>
+                <p>
+                  Loading... If does not load for a long time, press the button
+                </p>
+              </td>
+              <td>
+                <button type="button" onclick="loadContacts()">
+                  Fetch Contact
+                </button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div id="post-contact">
         <p>
-          Form to add a Contact using Fetch Post (All elements are required, see
-          console for errors if something is missing or bad entered)
+          Form to add a Contact using Fetch Post (All elements are required, a
+          message will be displayed directly from the api if something is
+          invalid or empty [on console will display the array of errors if you
+          want to see it]). If all data entered is valid, when the button is
+          pressed, the list will load again and the new contact will be
+          displayed.
         </p>
         <form id="post-form">
           <label for="firstName">Add a first name</label>
-          <input type="text" id="firstName" required /><br />
+          <input type="text" id="firstName" required />
+          <span class="error" aria-live="polite"></span><br />
           <label for="lastName">Add a last name</label>
-          <input type="text" id="lastName" required /><br />
+          <input type="text" id="lastName" required />
+          <span class="error" aria-live="polite"></span><br />
           <label for="email">Add an email</label>
-          <input type="email" id="email" required /><br />
+          <input type="email" id="email" required />
+          <span class="error" aria-live="polite"></span><br />
           <label for="birthday">Add birthday</label>
-          <input type="text" id="birthday" required /><br />
+          <input type="text" id="birthday" required />
+          <span class="error" aria-live="polite"></span><br />
           <label for="favoriteColor">Add Favorite Color</label>
-          <input type="text" id="favoriteColor" required /><br />
+          <input type="text" id="favoriteColor" required />
+          <span class="error" aria-live="polite"></span><br />
           <button type="button" onclick="postData()">Post Data</button>
         </form>
       </div>
       <h2>Questions</h2>
-      <p></p>
+      <p>No questions this week. Thank you.</p>
     </main>
     <footer>
       <p>
@@ -201,6 +226,11 @@
         <a
           href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation"
           >Form Validation</a
+        >
+        and
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+          >Fetch_API</a
         >
       </p>
     </footer>

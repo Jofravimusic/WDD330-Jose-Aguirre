@@ -69,14 +69,14 @@ function loadContacts() {
     contactDiv.innerHTML = '';
     contacts.forEach((contact) => {
       const tableRowEle = document.createElement('tr');
-
+      const id = contact._id;
       tableRowEle.innerHTML = `
           <td>${contact.firstName}</td>
           <td>${contact.lastName}</td>
           <td>${contact.email}</td>
           <td>${contact.birthday}</td>
           <td>${contact.favoriteColor}</td>
-          
+          <td><button onclick="deleteData('${id}')">X</button></td>
           `;
 
       contactDiv.append(tableRowEle);
@@ -87,6 +87,19 @@ function loadContacts() {
 try {
   loadContacts();
 } catch (error) {
+  const contactDiv = document.querySelector('#contactList');
+  contactDiv.innerHTML = `<tr>
+  <td>
+    <p>
+      Loading... If does not load for a long time, press the button
+    </p>
+  </td>
+  <td>
+    <button type="button" onclick="loadContacts()">
+      Fetch Contact
+    </button>
+  </td>
+</tr>`;
   console.log(error);
 }
 
@@ -121,9 +134,60 @@ async function postData() {
   });
 
   let result = response.json(); // parses JSON response into native JavaScript objects
+  const spans = document.getElementsByTagName('span');
+  for (let i = 0; i < spans.length; i++)
+    if (spans[i].classList.contains('active')) {
+      spans[i].classList.remove('active');
+      spans[i].textContent = '';
+    }
+  if (response.status == 400) {
+    //alert('Complete all fields with valid information');
+    result.then((data) => {
+      const errors = data.errors;
+
+      errors.forEach((error) => {
+        const spanError = document.querySelector(
+          `#${error.param} + span.error`
+        );
+        spanError.className = 'error active';
+        spanError.textContent = `${error.msg}`;
+      });
+      console.log(data);
+      console.table();
+    });
+    return;
+  }
   result.then((data) => {
     console.log(data);
   });
   loadContacts();
+  return result;
+}
+
+async function deleteData(id) {
+  const urlId = `${contactAPI}${id}`;
+  // Default options are marked with *
+  console.log(urlId);
+  const response = await fetch(urlId, {
+    method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    //body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+
+  loadContacts();
+
+  const result = response.json();
+  result.then((data) => {
+    console.log(data);
+  });
+  alert('Contact Deleted!');
   return result;
 }
