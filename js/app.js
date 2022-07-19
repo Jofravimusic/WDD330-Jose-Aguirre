@@ -96,6 +96,7 @@ const UIController = (function () {
     divSongDetail: '#song-detail',
     hfToken: '#hidden_token',
     divSonglist: '.song-list',
+    saveButton: '#save',
   };
 
   //public methods
@@ -108,6 +109,7 @@ const UIController = (function () {
         endpoints: document.querySelector(DOMElements.divSonglist),
         submit: document.querySelector(DOMElements.buttonSubmit),
         songDetail: document.querySelector(DOMElements.divSongDetail),
+        save: document.querySelector(DOMElements.saveButton),
       };
     },
 
@@ -220,7 +222,48 @@ const APPController = (function (UICtrl, APICtrl) {
       UICtrl.createLink(result.href, result.name, type);
     }
   });
-
+  //Save an endpoint
+  document.saveEndpoint = function saveEndpoint(endpoint, type) {
+    switch (type) {
+      case 'album':
+        Album.addNewAlbum(
+          endpoint.id,
+          endpoint.name,
+          endpoint.tracks,
+          endpoint.artists
+        );
+        break;
+      case 'artist':
+        Artist.addNewArtist(
+          endpoint.id,
+          endpoint.name,
+          endpoint.images[0].url,
+          endpoint.external_urls.spotify
+        );
+        break;
+      case 'playlist':
+        Playlist.addNewPlaylist(
+          endpoint.id,
+          endpoint.name,
+          endpoint.description,
+          endpoint.external_urls.spotify,
+          endpoint.owner.display_name,
+          endpoint.tracks.items
+        );
+        break;
+      case 'track':
+        Track.addNewTrack(
+          endpoint.id,
+          endpoint.name,
+          endpoint.album,
+          endpoint.artists,
+          endpoint.external_urls.spotify,
+          endpoint.preview_url,
+          endpoint.album.images[0].url
+        );
+        break;
+    }
+  };
   // create song selection click event listener
   DOMInputs.endpoints.addEventListener('click', async (e) => {
     // prevent page reset
