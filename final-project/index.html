@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Artists and Bands</title>
+  </head>
+  <body>
+    <form id="search-form">
+      <input type="hidden" id="hidden_token" />
+      <label for="type">Select type search:</label>
+      <select id="type">
+        <option value="album">Album</option>
+        <option value="artist">Artist</option>
+        <option value="playlist">Playlists</option>
+        <option value="track">Track</option></select
+      ><br />
+      <label for="searchInput">Search:</label>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search your artist, album, etc"
+      />
+      <button type="submit" id="btn_submit">Search</button>
+    </form>
+    <div class="row">
+      <div class="col-sm-6 px-0">
+        <div class="list-group song-list"></div>
+      </div>
+      <div class="offset-md-1 col-sm-4" id="song-detail"></div>
+    </div>
+    <script src="/js/app.js" type="module"></script>
+  </body>
+</html>
