@@ -19,8 +19,11 @@ const Playlist = new Playlists('playlists');
 const Track = new Tracks('tracks');
 
 const APIController = (function () {
+  const part1 = document.getElementById('hidden_p1').value;
+  const part2 = document.getElementById('hidden_p2').value;
+
   const clientId = 'b8f028cccb6a4b7d990531aaaa2847df';
-  const clientSecret = 'ea17abb902d64a71b2c0fb51a0474b7a';
+  const clientSecret = part1 + part2;
 
   // private methods
   const _getToken = async () => {
