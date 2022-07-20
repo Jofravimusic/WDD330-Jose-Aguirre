@@ -50,7 +50,10 @@ main {
 a {
   color: #1db954;
 }
-
+video {
+  max-width: 8em;
+  max-height: 4em;
+}
 footer {
   text-align: center;
   padding: 1em;

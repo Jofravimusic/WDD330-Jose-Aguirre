@@ -14,18 +14,29 @@ export function createAlbumDetail(album) {
   list += `</li>
     <li><button type='button' id='save' onclick='saveEndpoint("${album.href}", "album")'>Add Album to your library music</button></li>
       <li>Tracks:</li>
-      <ul id="album-tracks">`;
+      <li><table id="album-tracks">
+        <thead>
+          <tr>
+            <th>Track Name</th>
+            <th>Link</th>
+            <th>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
+      `;
 
   for (let track of tracks) {
     list += `
-        <li>${track.name} - <a href="${track.external_urls.spotify}" target="_blank"> Open on Spotify</a>
-        Preview: <video controls="" name="media"><source src="${track.preview_url}" type="audio/mpeg"></video></li>
+        <tr>
+          <td>${track.name}</td>
+          <td><a href="${track.external_urls.spotify}" target="_blank"> Open on Spotify</a></td>
+          <td><video controls="" name="media"><source src="${track.preview_url}" type="audio/mpeg"></video></td></tr>
         `;
   }
 
-  list += `
-        
-        </ul>
+  list += `</tbody>
+          </table
+        </li>
       </ul>
       `;
 
@@ -54,12 +65,23 @@ export function createPlaylistDetail(playlist) {
     <li><a href="${playlist.external_urls.spotify}" target="_blank">Listen playlist on Spotify</a></li>
     <li><button type='button' id='save' onclick='saveEndpoint("${playlist.href}", "playlist")'>Add Playlist to your library music</button></li>
     <li>Tracks:</li>
-    <ul id="album-tracks">
+    <li><table id="album-tracks">
+        <thead>
+          <tr>
+            <th>Track Name</th>
+            <th>Artists</th>
+            <th>Link on Spotify</th>
+            <th>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
     `;
 
   for (let track of tracks) {
-    list += `
-            <li>${track.track.name} - Artists: | `;
+    list += `<tr>
+            <td>${track.track.name}</td>
+            <td>| 
+            `;
 
     let artists = track.track.artists;
 
@@ -67,15 +89,16 @@ export function createPlaylistDetail(playlist) {
       list += `${artist.name} | `;
     }
 
-    list += `
-            <a href="${track.track.external_urls.spotify}" target="_blank"> Open on Spotify</a>
-            Preview: <video controls="" name="media"><source src="${track.track.preview_url}" type="audio/mpeg"></video></li>
+    list += `</td>
+
+            <td><a href="${track.track.external_urls.spotify}" target="_blank"> Open on Spotify</a></td>
+            <td><video controls="" name="media"><source src="${track.track.preview_url}" type="audio/mpeg"></video></td></tr>
             `;
   }
 
-  list += `
-            
-          </ul>
+  list += `</tbody>
+            </table>
+          </li>
     
           </ul>
           `;
