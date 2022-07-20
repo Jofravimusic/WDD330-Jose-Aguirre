@@ -16,41 +16,19 @@ export default class Tracks {
     };
     writeToLS(this.key, track);
   }
-  getAllArtists() {
-    const allArtists = readFromLS(this.key);
-    return allArtists;
+  getAllTracks() {
+    const allTracks = readFromLS(this.key);
+    return allTracks;
   }
-  getcompletedTasks() {
-    let allTasks = this.getAllTasks();
-    let completedTasks = allTasks.filter((task) => task.completed == true);
-    return completedTasks;
-  }
-
-  getActiveTasks() {
-    let allTasks = this.getAllTasks();
-    let activeTasks = allTasks.filter((task) => task.completed == false);
-    return activeTasks;
+  getOneTrack(id) {
+    let allTracks = this.getAllTracks();
+    let track = allTracks.filter((track) => track.id == id);
+    return track;
   }
 
-  deleteArtist(id) {
-    let allArtists = this.getAllArtists();
-    allArtists = allArtists.filter((task) => task.id != id);
-    return writeArrayToLS(this.key, allArtists);
-  }
-  completedTasks(id) {
-    let allTasks = this.getAllTasks();
-    let taskIndex = allTasks.findIndex((task) => task.id == id);
-
-    allTasks[taskIndex].completed = true;
-
-    return writeArrayToLS(this.key, allTasks);
-  }
-  uncompleteTasks(id) {
-    let allTasks = this.getAllTasks();
-    let taskIndex = allTasks.findIndex((task) => task.id == id);
-
-    allTasks[taskIndex].completed = false;
-
-    return writeArrayToLS(this.key, allTasks);
+  deleteTrack(id) {
+    let allTracks = this.getAllTracks();
+    allTracks = allTracks.filter((track) => track.id != id);
+    return writeArrayToLS(this.key, allTracks);
   }
 }

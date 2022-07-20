@@ -7,6 +7,10 @@ import {
   createArtistDetail,
   createPlaylistDetail,
   createTrackDetail,
+  savedAlbumDetail,
+  savedArtistDetail,
+  savedPlaylistDetail,
+  savedTrackDetail,
 } from './app-utilities.js';
 
 const Album = new Albums('albums');
@@ -97,6 +101,8 @@ const UIController = (function () {
     hfToken: '#hidden_token',
     divSonglist: '.song-list',
     saveButton: '#save',
+    preferences: '.preferences',
+    savedPreferences: '.saved-preferences',
   };
 
   //public methods
@@ -110,29 +116,22 @@ const UIController = (function () {
         submit: document.querySelector(DOMElements.buttonSubmit),
         songDetail: document.querySelector(DOMElements.divSongDetail),
         save: document.querySelector(DOMElements.saveButton),
+        preferences: document.querySelector(DOMElements.preferences),
+        savedPreferences: document.querySelector(DOMElements.savedPreferences),
       };
     },
 
-    // need methods to create select list option
-    createGenre(text, value) {
-      const html = `<option value="${value}">${text}</option>`;
-      document
-        .querySelector(DOMElements.selectGenre)
-        .insertAdjacentHTML('beforeend', html);
-    },
-
-    createPlaylist(text, value) {
-      const html = `<option value="${value}">${text}</option>`;
-      document
-        .querySelector(DOMElements.selectPlaylist)
-        .insertAdjacentHTML('beforeend', html);
-    },
-
     // need method to create a track list group item
-    createLink(id, name, type) {
-      const html = `<a href="#" value="${type}" class="list-group-item list-group-item-action list-group-item-light" id="${id}">${name}</a><br>`;
+    createLink(id, name) {
+      const html = `<a href="#"  id="${id}">${name}</a><br>`;
       document
         .querySelector(DOMElements.divSonglist)
+        .insertAdjacentHTML('beforeend', html);
+    },
+    createSavedLink(id, name, type) {
+      const html = `<a href="#" class="${type}" id="${id}">${name}</a><br>`;
+      document
+        .querySelector(DOMElements.savedPreferences)
         .insertAdjacentHTML('beforeend', html);
     },
 
@@ -161,12 +160,44 @@ const UIController = (function () {
       detailDiv.insertAdjacentHTML('beforeend', html);
     },
 
+    createSavedDetail(id, type) {
+      const detailDiv = document.querySelector(DOMElements.divSongDetail);
+      // any time user clicks a new song, we need to clear out the song detail div
+      detailDiv.innerHTML = '';
+      let html;
+
+      switch (type) {
+        case 'album':
+          const album = Album.getOneAlbum(id);
+          html = savedAlbumDetail(album);
+          break;
+        case 'artist':
+          const artist = Artist.getOneArtist(id);
+          html = savedArtistDetail(artist);
+          break;
+        case 'playlist':
+          const playlist = Playlist.getOnePlaylist(id);
+          html = savedPlaylistDetail(playlist);
+          break;
+        case 'track':
+          const track = Track.getOneTrack(id);
+          html = savedTrackDetail(track);
+          break;
+      }
+
+      detailDiv.insertAdjacentHTML('beforeend', html);
+    },
+
     resetTrackDetail() {
       this.inputField().songDetail.innerHTML = '';
     },
 
     resetTracks() {
       this.inputField().endpoints.innerHTML = '';
+      this.resetTrackDetail();
+    },
+    resetSavedPreferences() {
+      this.inputField().savedPreferences.innerHTML = '';
       this.resetTrackDetail();
     },
 
@@ -198,6 +229,7 @@ const APPController = (function (UICtrl, APICtrl) {
   DOMInputs.type.addEventListener('change', async () => {
     //reset the div
     UICtrl.resetTracks();
+    UICtrl.resetSavedPreferences();
   });
 
   // create submit button click event listener
@@ -206,6 +238,7 @@ const APPController = (function (UICtrl, APICtrl) {
     e.preventDefault();
     // clear tracks
     UICtrl.resetTracks();
+    UICtrl.resetSavedPreferences();
     //get the token
     const token = UICtrl.getStoredToken().token;
 
@@ -223,7 +256,12 @@ const APPController = (function (UICtrl, APICtrl) {
     }
   });
   //Save an endpoint
-  document.saveEndpoint = function saveEndpoint(endpoint, type) {
+  document.saveEndpoint = async function saveEndpoint(href, type) {
+    const token = UICtrl.getStoredToken().token;
+    //get the endpoint object
+    const endpoint = await APICtrl.getEndPoint(token, href);
+
+    console.log(endpoint);
     switch (type) {
       case 'album':
         Album.addNewAlbum(
@@ -232,6 +270,7 @@ const APPController = (function (UICtrl, APICtrl) {
           endpoint.tracks,
           endpoint.artists
         );
+        alert(`${endpoint.name} was saved on your Albums library`);
         break;
       case 'artist':
         Artist.addNewArtist(
@@ -240,6 +279,7 @@ const APPController = (function (UICtrl, APICtrl) {
           endpoint.images[0].url,
           endpoint.external_urls.spotify
         );
+        alert(`${endpoint.name} was saved on your Artists library`);
         break;
       case 'playlist':
         Playlist.addNewPlaylist(
@@ -250,6 +290,7 @@ const APPController = (function (UICtrl, APICtrl) {
           endpoint.owner.display_name,
           endpoint.tracks.items
         );
+        alert(`${endpoint.name} was saved on your Playlists library`);
         break;
       case 'track':
         Track.addNewTrack(
@@ -261,10 +302,65 @@ const APPController = (function (UICtrl, APICtrl) {
           endpoint.preview_url,
           endpoint.album.images[0].url
         );
+        alert(`${endpoint.name} was saved on your Tracks library`);
         break;
     }
   };
-  // create song selection click event listener
+
+  document.deleteSaved = async function deleteSaved(id, type) {
+    switch (type) {
+      case 'album':
+        Album.deleteAlbum(id);
+        alert('Album was Deleted');
+
+        UICtrl.resetSavedPreferences();
+        UICtrl.resetTrackDetail();
+
+        const albums = Album.getAllAlbums();
+        for (let album of albums) {
+          UICtrl.createSavedLink(album.id, album.name, 'album');
+        }
+        break;
+      case 'artist':
+        Artist.deleteArtist(id);
+        alert('Artist was Deleted');
+
+        UICtrl.resetSavedPreferences();
+        UICtrl.resetTrackDetail();
+
+        const artists = Artist.getAllArtists();
+        for (let artist of artists) {
+          UICtrl.createSavedLink(artist.id, artist.name, 'artist');
+        }
+        break;
+      case 'playlist':
+        Playlist.deletePlaylist(id);
+        alert('Playlist was Deleted');
+
+        UICtrl.resetSavedPreferences();
+        UICtrl.resetTrackDetail();
+
+        const playlists = Playlist.getAllPlaylists();
+        for (let playlist of playlists) {
+          UICtrl.createSavedLink(playlist.id, playlist.name, 'playlist');
+        }
+        break;
+      case 'track':
+        Track.deleteTrack(id);
+        alert('Track was Deleted');
+
+        UICtrl.resetSavedPreferences();
+        UICtrl.resetTrackDetail();
+
+        const tracks = Track.getAllTracks();
+        for (let track of tracks) {
+          UICtrl.createSavedLink(track.id, track.name, 'track');
+        }
+        break;
+    }
+  };
+
+  // create a selection click event listener
   DOMInputs.endpoints.addEventListener('click', async (e) => {
     // prevent page reset
     e.preventDefault();
@@ -276,35 +372,60 @@ const APPController = (function (UICtrl, APICtrl) {
     //get the endpoint object
     const endpoint = await APICtrl.getEndPoint(token, idEndpoint);
 
-    //Album.addNewAlbum(track.id, track.name, track.tracks, track.artists);
-    /*Artist.addNewArtist(
-      track.id,
-      track.name,
-      track.images[0].url,
-      track.external_urls.spotify
-    );*/
-
-    /*Playlist.addNewPlaylist(
-      track.id,
-      track.name,
-      track.description,
-      track.external_urls.spotify,
-      track.owner.display_name,
-      track.tracks.items
-    );*/
-
-    /*Track.addNewTrack(
-      track.id,
-      track.name,
-      track.album,
-      track.artists,
-      track.external_urls.spotify,
-      track.preview_url,
-      track.album.images[0].url
-    );*/
     const type = UICtrl.inputField().type.value;
     // load the track details
     UICtrl.createEndpointDetail(endpoint, type);
+  });
+
+  DOMInputs.preferences.addEventListener('click', async (e) => {
+    // prevent page reset
+    e.preventDefault();
+    UICtrl.resetTracks();
+    UICtrl.resetSavedPreferences();
+
+    // get the preferences id
+    const preference = e.target.id;
+    //Send to build
+
+    switch (preference) {
+      case 'Albums':
+        const albums = Album.getAllAlbums();
+        for (let album of albums) {
+          UICtrl.createSavedLink(album.id, album.name, 'album');
+        }
+        break;
+      case 'Artists':
+        const artists = Artist.getAllArtists();
+        for (let artist of artists) {
+          UICtrl.createSavedLink(artist.id, artist.name, 'artist');
+        }
+        break;
+      case 'Playlists':
+        const playlists = Playlist.getAllPlaylists();
+        for (let playlist of playlists) {
+          UICtrl.createSavedLink(playlist.id, playlist.name, 'playlist');
+        }
+        break;
+      case 'Tracks':
+        const tracks = Track.getAllTracks();
+        for (let track of tracks) {
+          UICtrl.createSavedLink(track.id, track.name, 'track');
+        }
+        break;
+    }
+  });
+
+  DOMInputs.savedPreferences.addEventListener('click', async (e) => {
+    // prevent page reset
+    e.preventDefault();
+    UICtrl.resetTrackDetail();
+    // get the token
+
+    // get the endpoint
+    const id = e.target.id;
+    const type = e.target.classList;
+    //get the endpoint object
+    UICtrl.createSavedDetail(id, type.value);
   });
 
   return {
