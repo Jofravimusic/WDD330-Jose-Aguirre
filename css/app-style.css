@@ -137,6 +137,7 @@ footer {
   justify-self: center;
   text-align: center;
   font-family: 'Gentium Book Plus', serif;
+  animation: appeardown 0.8s linear;
 }
 
 #artist-display li img {
@@ -189,6 +190,7 @@ button:hover {
   max-width: max-content;
   justify-self: center;
   text-align: center;
+  animation: appearup 0.8s linear;
 }
 
 #album-display li a {
@@ -226,6 +228,7 @@ button:hover {
   justify-self: center;
   text-align: center;
   font-family: 'Gentium Book Plus', serif;
+  animation: appeardown 0.8s linear;
 }
 
 #track-display li h2 {
@@ -278,6 +281,7 @@ button:hover {
   justify-self: center;
   text-align: center;
   font-family: 'Gentium Book Plus', serif;
+  animation: appearup 2.5s linear;
 }
 
 #playlist-display li h2 {
@@ -315,4 +319,34 @@ table {
 footer p {
   font-family: 'Bree Serif', serif;
   font-size: 1.2em;
+}
+
+@keyframes appearup {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  90% {
+    transform: translateY(0);
+    opacity: 0.5;
+    margin: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appeardown {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  90% {
+    transform: translateY(0);
+    opacity: 0.5;
+    margin: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
