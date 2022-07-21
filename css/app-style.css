@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 html,
 body {
   margin: 0;
@@ -12,14 +16,23 @@ body {
   grid-template-rows: 10em 1fr 1fr;
 }
 header {
-  grid-column: span 3;
+  padding: 1em;
+  grid-column: 2/4;
   text-align: center;
   background-color: #000;
 }
+
+header h1 {
+  font-family: 'Gentium Book Plus', serif;
+  font-size: 3em;
+  margin: 0;
+}
 #search-section {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 500;
   grid-column: 1;
-  grid-row: span 4;
-  min-height: 71.5vh;
+  grid-row: 1/4;
+  min-height: 88.3vh;
   background-color: #191414;
   padding: 1em;
   text-align: center;
@@ -37,7 +50,8 @@ header {
 }
 
 .song-list a:hover {
-  background-color: #191414;
+  background-color: #1db954;
+  color: #191414;
   border-radius: 1em;
 }
 #list-results {
@@ -45,7 +59,7 @@ header {
   padding: 1em;
   background-color: #000;
   border-radius: 3em;
-  min-height: 48vh;
+  min-height: 61vh;
 }
 #search-form {
   display: flex;
@@ -62,6 +76,8 @@ header {
 }
 
 .preferences a {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.2em;
   text-decoration: none;
   padding: 0.5em;
   transition: 0.3s;
@@ -72,14 +88,20 @@ header {
   border-radius: 1em;
 }
 
+.saved-preferences {
+  display: flex;
+  flex-direction: column;
+}
+
 .saved-preferences a {
   text-decoration: none;
   padding: 0.5em;
   transition: 0.3s;
 }
 
-.saved-preferences a {
-  background-color: #191414;
+.saved-preferences a:hover {
+  background-color: #1db954;
+  color: #191414;
   border-radius: 1em;
 }
 
@@ -97,6 +119,200 @@ video {
 }
 footer {
   text-align: center;
-  padding: 1em;
+  padding: 0.5em;
   background-color: #1db954;
+}
+#song-detail {
+  display: grid;
+}
+
+#artist-display {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1em;
+  gap: 1em;
+  max-width: max-content;
+  justify-self: center;
+  text-align: center;
+  font-family: 'Gentium Book Plus', serif;
+}
+
+#artist-display li img {
+  max-width: 20em;
+  border-radius: 2em;
+}
+
+#artist-display h2 {
+  font-size: 3em;
+}
+
+#artist-display li a {
+  text-decoration: none;
+  padding: 0.5em;
+  transition: 0.3s;
+  font-size: 2em;
+}
+
+#artist-display li a:hover {
+  background-color: #1db954;
+  color: #191414;
+  border-radius: 1em;
+}
+
+button {
+  background-color: #1db954;
+  color: #191414;
+  padding: 0.6em;
+  border-radius: 1em;
+  font-family: 'Bree Serif', serif;
+  font-size: 1.1em;
+  margin-top: 0.5em;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #191414;
+  color: #fff;
+}
+
+#album-display {
+  font-family: 'Gentium Book Plus', serif;
+  font-size: 1.1em;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1em;
+  gap: 1em;
+  max-width: max-content;
+  justify-self: center;
+  text-align: center;
+}
+
+#album-display li a {
+  text-decoration: none;
+  padding: 0.5em;
+  transition: 0.3s;
+  font-size: 1.5em;
+}
+
+#album-display li a:hover {
+  background-color: #1db954;
+  color: #191414;
+  border-radius: 1em;
+}
+
+#album-display li h2 {
+  font-size: 3em;
+  margin: 0;
+}
+
+#album-display li p {
+  font-size: 3em;
+  margin: 0;
+  color: #1db954;
+}
+
+#track-display {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1em;
+  gap: 1em;
+  max-width: max-content;
+  justify-self: center;
+  text-align: center;
+  font-family: 'Gentium Book Plus', serif;
+}
+
+#track-display li h2 {
+  font-size: 3em;
+  margin: 0;
+}
+
+#track-display li img {
+  max-width: 20em;
+  border-radius: 2em;
+}
+
+#track-display li a {
+  text-decoration: none;
+  padding: 0.5em;
+  transition: 0.3s;
+  font-size: 1.5em;
+}
+
+#track-display li a:hover {
+  background-color: #1db954;
+  color: #191414;
+  border-radius: 1em;
+}
+
+#track-display li p {
+  font-size: 1.5em;
+  margin: 0;
+  color: #1db954;
+}
+
+#type {
+  font-family: 'Bree Serif', serif;
+  text-align: center;
+}
+
+#searchInput {
+  font-family: 'Bree Serif', serif;
+  text-align: center;
+}
+
+#playlist-display {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1em;
+  gap: 1em;
+  max-width: max-content;
+  justify-self: center;
+  text-align: center;
+  font-family: 'Gentium Book Plus', serif;
+}
+
+#playlist-display li h2 {
+  font-size: 3em;
+  margin: 0;
+}
+
+#playlist-display li a {
+  text-decoration: none;
+  padding: 0.5em;
+  transition: 0.3s;
+  font-size: 1.5em;
+}
+
+#playlist-display li a:hover {
+  background-color: #1db954;
+  color: #191414;
+  border-radius: 1em;
+}
+
+#playlist-display li p {
+  font-size: 1.5em;
+  margin: 0;
+  color: #1db954;
+}
+
+tr:nth-child(even) {
+  background-color: #191414;
+}
+
+table {
+  width: 70vw;
+}
+
+footer p {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.2em;
 }

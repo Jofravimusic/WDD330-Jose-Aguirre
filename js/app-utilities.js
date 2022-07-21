@@ -1,19 +1,19 @@
 export function createAlbumDetail(album) {
   const artists = album.artists;
   const tracks = album.tracks.items;
-  let list = '<ul class="album">';
+  let list = '<ul id="album-display">';
   list += `
       <input type="hidden" id="album-id" value="${album.id}">
       <li><h2>${album.name}</h2>
-      <li>Artists: `;
+      <li><p>Artists: |`;
 
   for (let artist of artists) {
-    list += `${artist.name}, `;
+    list += `${artist.name} | `;
   }
 
-  list += `</li>
+  list += `</p></li>
     <li><button type='button' id='save' onclick='saveEndpoint("${album.href}", "album")'>Add Album to your library music</button></li>
-      <li>Tracks:</li>
+      <li><p>Tracks:</p></li>
       <li><table id="album-tracks">
         <thead>
           <tr>
@@ -64,7 +64,7 @@ export function createPlaylistDetail(playlist) {
     <li>Owner: ${playlist.owner.display_name}</li>
     <li><a href="${playlist.external_urls.spotify}" target="_blank">Listen playlist on Spotify</a></li>
     <li><button type='button' id='save' onclick='saveEndpoint("${playlist.href}", "playlist")'>Add Playlist to your library music</button></li>
-    <li>Tracks:</li>
+    <li><p>Tracks:</p></li>
     <li><table id="album-tracks">
         <thead>
           <tr>
@@ -110,15 +110,15 @@ export function createTrackDetail(track) {
   let list = `<ul id="track-display">
     <li><h2>${track.name}</h2></li>
     <li><p>Album: ${track.album.name}</p></li>
-    <li>Artists: |
+    <li><p>Artists: |
     `;
   for (let artist of artists) {
     list += ` ${artist.name} | `;
   }
-  list += `</li>
+  list += `</p></li>
       <li><img src="${track.album.images[0].url}" alt="Album Photo"></li>
       <li><a href="${track.external_urls.spotify}" target="_blank">Listen on Spotify</a></li>
-      <li>Preview:
+      <li>
       <video controls="" name="media"><source src="${track.preview_url}" type="audio/mpeg"></video></li>
       <li><button type='button' id='save' onclick='saveEndpoint("${track.href}", "track")'>Add Track to your library music</button></li>
       </ul>
@@ -131,19 +131,19 @@ export function savedAlbumDetail(album) {
   const artists = album.artists;
   const tracks = album.tracks.items;
 
-  let list = '<ul class="album">';
+  let list = '<ul id="album-display">';
   list += `
       <input type="hidden" id="album-id" value="${album.id}">
       <li><h2>${album.name}</h2>
-      <li>Artists: `;
+      <li><p>Artists: `;
 
   for (let artist of artists) {
-    list += `${artist.name}, `;
+    list += `${artist.name}`;
   }
 
-  list += `</li>
+  list += `</p></li>
     <li><button type='button' id='delete' onclick='deleteSaved("${album.id}", "album")'>Delete Album from your library music</button></li>
-      <li>Tracks:</li>
+      <li><p>Tracks:</p></li>
       <li><table id="album-tracks">
         <thead>
           <tr>
@@ -197,7 +197,7 @@ export function savedPlaylistDetail(playlist) {
     <li>Owner: ${playlist.owner}</li>
     <li><a href="${playlist.spotifyURL}" target="_blank">Listen playlist on Spotify</a></li>
     <li><button type='button' id='delete' onclick='deleteSaved("${playlist.id}", "playlist")'>Delete Playlist from your library music</button></li>
-    <li>Tracks:</li>
+    <li><p>Tracks:</p></li>
     <li><table id="album-tracks">
         <thead>
           <tr>
@@ -243,15 +243,15 @@ export function savedTrackDetail(track) {
   let list = `<ul id="track-display">
     <li><h2>${track.name}</h2></li>
     <li><p>Album: ${track.album.name}</p></li>
-    <li>Artists: |
+    <li><p>Artists: |
     `;
   for (let artist of artists) {
     list += ` ${artist.name} | `;
   }
-  list += `</li>
+  list += `</p></li>
       <li><img src="${track.album.images[0].url}" alt="Album Photo"></li>
       <li><a href="${track.spotifyURL}" target="_blank">Listen on Spotify</a></li>
-      <li>Preview:
+      <li>
       <video controls="" name="media"><source src="${track.preview}" type="audio/mpeg"></video></li>
       <li><button type='button' id='delete' onclick='deleteSaved("${track.id}", "track")'>Delete Track from your library music</button></li>
       </ul>
