@@ -144,18 +144,29 @@ export function savedAlbumDetail(album) {
   list += `</li>
     <li><button type='button' id='delete' onclick='deleteSaved("${album.id}", "album")'>Delete Album from your library music</button></li>
       <li>Tracks:</li>
-      <ul id="album-tracks">`;
+      <li><table id="album-tracks">
+        <thead>
+          <tr>
+            <th>Track Name</th>
+            <th>Link</th>
+            <th>Preview</th>
+          </tr>
+        </thead>
+        <tbody>`;
 
   for (let track of tracks) {
-    list += `
-        <li>${track.name} - <a href="${track.external_urls.spotify}" target="_blank"> Open on Spotify</a>
-        Preview: <video controls="" name="media"><source src="${track.preview_url}" type="audio/mpeg"></video></li>
+    list += `<tr>
+        <td>${track.name}</td>
+        <td><a href="${track.external_urls.spotify}" target="_blank"> Open on Spotify</a></td>
+        <td><video controls="" name="media"><source src="${track.preview_url}" type="audio/mpeg"></video></td>
+        </tr>
         `;
   }
 
-  list += `
+  list += `</tbody>
+          </table>
         
-        </ul>
+        </li>
       </ul>
       `;
 
@@ -187,12 +198,22 @@ export function savedPlaylistDetail(playlist) {
     <li><a href="${playlist.spotifyURL}" target="_blank">Listen playlist on Spotify</a></li>
     <li><button type='button' id='delete' onclick='deleteSaved("${playlist.id}", "playlist")'>Delete Playlist from your library music</button></li>
     <li>Tracks:</li>
-    <ul id="album-tracks">
+    <li><table id="album-tracks">
+        <thead>
+          <tr>
+            <th>Track Name</th>
+            <th>Artists</th>
+            <th>Link on Spotify</th>
+            <th>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
     `;
 
   for (let track of tracks) {
-    list += `
-            <li>${track.track.name} - Artists: | `;
+    list += `<tr>
+            <td>${track.track.name}</td>
+            <td>| `;
 
     let artists = track.track.artists;
 
@@ -200,15 +221,16 @@ export function savedPlaylistDetail(playlist) {
       list += `${artist.name} | `;
     }
 
-    list += `
-            <a href="${track.track.external_urls.spotify}" target="_blank"> Open on Spotify</a>
-            Preview: <video controls="" name="media"><source src="${track.track.preview_url}" type="audio/mpeg"></video></li>
-            `;
+    list += `</td>
+            <td><a href="${track.track.external_urls.spotify}" target="_blank"> Open on Spotify</a></td>
+            <td><video controls="" name="media"><source src="${track.track.preview_url}" type="audio/mpeg"></video></td>
+            </tr>`;
   }
 
-  list += `
+  list += `</tbody>
+          </table>
             
-          </ul>
+          </li>
     
           </ul>
           `;

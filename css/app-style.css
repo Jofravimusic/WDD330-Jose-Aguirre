@@ -19,27 +19,68 @@ header {
 #search-section {
   grid-column: 1;
   grid-row: span 4;
-  min-height: 50vh;
-  background-color: #000;
+  min-height: 71.5vh;
+  background-color: #191414;
   padding: 1em;
   text-align: center;
 }
 
 .song-list {
-  padding: 1em;
+  display: flex;
+  flex-direction: column;
 }
 
+.song-list a {
+  text-decoration: none;
+  padding: 0.5em;
+  transition: 0.3s;
+}
+
+.song-list a:hover {
+  background-color: #191414;
+  border-radius: 1em;
+}
+#list-results {
+  margin-top: 0.5em;
+  padding: 1em;
+  background-color: #000;
+  border-radius: 3em;
+  min-height: 48vh;
+}
 #search-form {
   display: flex;
   flex-direction: column;
-  background-color: #191414;
-  padding: 1em;
-  border-radius: 2em;
+  background-color: #000;
+  padding: 2em;
+  border-radius: 3em;
   text-align: center;
 }
 
-.saved-preferences {
-  padding: 1em;
+.preferences {
+  display: inline-flex;
+  gap: 1em;
+}
+
+.preferences a {
+  text-decoration: none;
+  padding: 0.5em;
+  transition: 0.3s;
+}
+
+.preferences a:hover {
+  background-color: #191414;
+  border-radius: 1em;
+}
+
+.saved-preferences a {
+  text-decoration: none;
+  padding: 0.5em;
+  transition: 0.3s;
+}
+
+.saved-preferences a {
+  background-color: #191414;
+  border-radius: 1em;
 }
 
 main {

@@ -13,9 +13,9 @@
         <h1>Music Artists and Bands APP</h1>
 
         <nav class="preferences">
-          <a href="#" id="Albums">Get Saved Albums | </a>
-          <a href="#" id="Artists">Get Saved Artists | </a>
-          <a href="#" id="Playlists">Get Saved Playlists | </a>
+          <a href="#" id="Albums">Get Saved Albums</a>
+          <a href="#" id="Artists">Get Saved Artists</a>
+          <a href="#" id="Playlists">Get Saved Playlists</a>
           <a href="#" id="Tracks">Get Saved Tracks</a>
         </nav>
       </header>
@@ -36,11 +36,13 @@
             type="text"
             id="searchInput"
             placeholder="Search your artist, album, etc"
-          />
+          /><br />
           <button type="submit" id="btn_submit">Search</button>
         </form>
-        <div class="list-group song-list"></div>
-        <div class="saved-preferences"></div>
+        <div id="list-results">
+          <div class="list-group song-list"></div>
+          <div class="saved-preferences"></div>
+        </div>
       </aside>
       <main id="principal-display">
         <div id="song-detail"></div>
